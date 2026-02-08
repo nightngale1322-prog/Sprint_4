@@ -69,8 +69,8 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book ('Простоквашино')
         collector.add_book_in_favorites ('Простоквашино')
-        collector.get_list_of_favorites_books()
-        assert 'Простоквашино' in collector.favorites
+        favs_list = collector.get_list_of_favorites_books()
+        assert 'Простоквашино' in favs_list
 
 
     
