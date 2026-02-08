@@ -22,5 +22,7 @@
     1.9 Тест на удаление 1 книги из избранного (test_delete_book_from_favorites_delete_one_succsess)
 
     1.10 Тест на возврат 1 книги из списка избранного (test_get_list_of_favorites_books_get_one_succsess)
+
+    1.11. Тест на проверку словаря get_books_genre (test_get_books_genre_return_list_success)
 # Sprint_4
 # Sprint_4

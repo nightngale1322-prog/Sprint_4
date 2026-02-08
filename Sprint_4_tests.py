@@ -15,11 +15,20 @@ class TestBooksCollector:
         assert collector.get_book_genre ('Колобок') == 'Ужасы'
 
     @pytest.mark.parametrize ('name, genre', [['Спящая красавица', 'Фантастика'], ['Котенок Гав','Мультфильмы']])
-    def test_get_book_genre_return_two_genre_succsess(self, name, genre):
+    def test_get_book_genre_return_two_genre_success(self, name, genre):
         collector = BooksCollector()
         collector.add_new_book(name)
         collector.set_book_genre (name, genre)
         assert collector.get_book_genre (name) == genre
+
+    @pytest.mark.parametrize ('name, genre', [['Золушка', 'Мультфильмы'], ['Мулан','Мультфильмы']])
+    def test_get_books_genre_return_list_success(self, name, genre):
+        collector = BooksCollector()
+        collector.add_new_book(name)
+        collector.set_book_genre(name, genre)
+        genres = collector.get_book_genre(name)
+        assert collector.get_book_genre(name) == genres
+
 
     def test_set_book_genre_genre_not_in_list_no_book(self):
         collector = BooksCollector()
@@ -49,7 +58,7 @@ class TestBooksCollector:
 
 
     @pytest.mark.parametrize('names', [['Автостопом по галактике', 'Мухтар', 'Реквием по мечте']])
-    def test_add_book_in_favorites_add_three_books_succsess(self, names):
+    def test_add_book_in_favorites_add_three_books_success(self, names):
         collector = BooksCollector()
         for name in names:
             collector.add_new_book(name)
@@ -57,7 +66,7 @@ class TestBooksCollector:
         assert len(collector.favorites) == len(names)
 
     @pytest.mark.parametrize('names', [['Гранатовый браслет', 'Чебурашка', 'О дивный новый мир']])
-    def test_delete_book_from_favorites_delete_one_succsess(self, names):
+    def test_delete_book_from_favorites_delete_one_success(self, names):
         collector = BooksCollector()
         for name in names:
             collector.add_new_book(name)
@@ -65,7 +74,7 @@ class TestBooksCollector:
         collector.delete_book_from_favorites(names [0])
         assert len(collector.favorites) == (len(names) - 1)
 
-    def test_get_list_of_favorites_books_get_one_succsess(self):
+    def test_get_list_of_favorites_books_get_one_success(self):
         collector = BooksCollector()
         collector.add_new_book ('Простоквашино')
         collector.add_book_in_favorites ('Простоквашино')
