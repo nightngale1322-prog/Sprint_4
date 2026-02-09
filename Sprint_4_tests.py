@@ -21,13 +21,12 @@ class TestBooksCollector:
         collector.set_book_genre (name, genre)
         assert collector.get_book_genre (name) == genre
 
-    @pytest.mark.parametrize ('name, genre', [['Золушка', 'Мультфильмы'], ['Мулан','Мультфильмы']])
-    def test_get_books_genre_return_list_success(self, name, genre):
+    def test_get_books_genre_return_list_success(self):
         collector = BooksCollector()
-        collector.add_new_book(name)
-        collector.set_book_genre(name, genre)
-        genres = collector.get_book_genre(name)
-        assert collector.get_book_genre(name) == genres
+        collector.add_new_book('Золушка')
+        collector.set_book_genre('Золушка', 'Мультфильмы')
+        genre = collector.get_books_genre()
+        assert genre['Золушка'] == 'Мультфильмы'
 
 
     def test_set_book_genre_genre_not_in_list_no_book(self):
